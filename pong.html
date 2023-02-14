@@ -2,19 +2,26 @@
 <html>
 <head>
   <title>Basic Pong HTML Game</title>
-   <link rel="stylesheet"type="text/css" href="https://avoegele45.github.io/style.css">
+   <link rel="stylesheet"type="text/css" href="style.css">
   <meta charset="UTF-8">
 </head>
 <body>
-  <table>
-    <th>Computer - Player</th>
-    <tr>
-      <td id="computerScore">0</td>
-      <td id="playerScore">0</td>
-    </tr>
-  </table>
+    <div id="gameBoard">
+        <table>
+            <th>Computer - Player</th>
+            <tr>
+              <td id="computerScore">0</td>
+              <td id="playerScore">0</td>
+            </tr>
+          </table>
+    </div>
+  <div id="gameOverScreen">
+    <h1>Game Over</h1>
+    <h3 id="gameResult"></h3>
+    <button onclick="restartGame()">Play Again</button>
+  </div>
 
 <canvas width="750" height="585" id="game"></canvas>
-<script src="https://avoegele45.github.io/script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
