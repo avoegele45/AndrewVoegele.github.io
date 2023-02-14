@@ -103,14 +103,14 @@ function loop() {
     if (ball.x < 0 ) {
       playerScore += 1;
 
-      document.getElementById(playerScore).innerHTML = playerScore;
+      document.getElementById("playerScore").innerHTML = playerScore;
 
     }
   
     if(ball.x > canvas.width){
-      copmuterScore += 1;
+      computerScore += 1;
 
-      document.getElementById(copmuterScore).innerHTML = copmuterScore;
+      document.getElementById("computerScore").innerHTML = computerScore;
 
     }
     // give some time for the player to recover before launching the ball again
