@@ -141,14 +141,14 @@ function loop() {
       endPopup.style.display="block";
 
       //function called at end of game if player chooses to play again.
-      playAgain.addEventListener("click",  function (){
-        //resets score and starts game over
-        endPopup.style.display = "none";
-        initialGame();
-      });
+      playAgain.addEventListener("click", playAgain);
     }
   }
-
+  //Restarts game 
+  function playAgain(){
+    endPopup.style.display = "none";
+    initialGame();
+  }
 
   // check to see if ball collides with paddle. if they do change x velocity
   if (collides(ball, leftPaddle)) {
