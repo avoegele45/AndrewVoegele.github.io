@@ -153,12 +153,14 @@ paddleAI();
     }
 
     // give some time for the player to recover before launching the ball again
+
     setTimeout(() => {
       ball.resetting = false;
       ball.x = canvas.width / 2;
       ball.y = canvas.height / 2;
 
     }, 1000);
+
   }
 
   // check to see if ball collides with paddle. if they do change x velocity
