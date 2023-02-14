@@ -102,17 +102,19 @@ function loop() {
 
     if (ball.x < 0 ) {
       playerScore += 1;
+      document.getElementById(playerScore).innerHTML = playerScore;
     }
   
     if(ball.x > canvas.width){
       copmuterScore += 1;
+      document.getElementById(copmuterScore).innerHTML = copmuterScore;
     }
     // give some time for the player to recover before launching the ball again
     setTimeout(() => {
       ball.resetting = false;
       ball.x = canvas.width / 2;
       ball.y = canvas.height / 2;
-    }, 600);
+    }, 300);
   }
 
   // check to see if ball collides with paddle. if they do change x velocity
