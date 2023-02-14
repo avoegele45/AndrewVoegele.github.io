@@ -141,10 +141,10 @@ function loop() {
       endPopup.style.display="block";
 
       //function called at end of game if player chooses to play again.
-      playAgain.addEventListener("click",  function restartGame(){
+      playAgain.addEventListener("click",  function (){
         //resets score and starts game over
-        initialGame();
         endPopup.style.display = "none";
+        initialGame();
       });
     }
   }
