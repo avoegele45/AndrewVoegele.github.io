@@ -123,14 +123,15 @@ function loop() {
       }, 1000);
     }
     else{
-      if(playerScore == 7){
-        winner = player
+      if(playerScore = 7){
+        winner = "player";
       }
       else{
-        winner = computer
+        winner = "computer";
       }
-      document.getElementById("End Screen").innerHTML = "Game over!" + winner +" wins!"
+      document.getElementById("End Screen").innerHTML = "Game over!" + winner + " wins!";
     }
+  }
 
 
   // check to see if ball collides with paddle. if they do change x velocity
