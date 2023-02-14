@@ -1,4 +1,4 @@
-  html, body {
+html, body {
     height: 100%;
     margin: 0;
   }
@@ -9,32 +9,32 @@
     align-items: center;
     justify-content: center;
   }
-  .modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.4rem;
-    width: 450px;
-    padding: 1.3rem;
-    min-height: 250px;
-    position: absolute;
-    top: 20%;
-    background-color: rgb(0, 0, 0);
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    z-index: 2;
+
+  h1{
+    position:  relative;
+    font-size: 50px;
+  }
+    
+  h2{
+    position:  relative;
+    font-size: 50px;
+  }
+
+  h3{
+    position:  relative;
+    font-size: 50px;
+  }
+
+  #gameBoard {
+    visibility: visible;
+  }
+
+  #gameOverScreen {
+    position: fixed;
+    visibility: hidden;
   }
   
-  .modal .flex {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  button {
-    cursor: pointer;
-    border: none;
-    font-weight: 600;
-    display: inline-block;
-    text-align: center;
+  #gameResult {
+    color: red;
+
   }
