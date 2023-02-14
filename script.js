@@ -135,8 +135,8 @@ function loop() {
       //sets end screen text
       document.getElementById("End Screen").innerHTML = "Game over, the " + winner + " wins!";
 
-      const endPopup = document.getElementById("End Popup");
-      const playAgain = document.getElementById("Play Again");
+      var endPopup = document.getElementById("End Popup");
+      var playAgain = document.getElementById("Play Again");
 
       endPopup.style.display="block";
 
