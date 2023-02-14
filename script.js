@@ -114,6 +114,7 @@ function loop() {
 
     }
     // give some time for the player to recover before launching the ball again
+    //check if either player has hit score limit and continue loop if not
     if(playerScore || computerScore !== 7){
       setTimeout(() => {
         ball.resetting = false;
@@ -122,15 +123,26 @@ function loop() {
 
       }, 1000);
     }
+    //if either play has hit 7, does not reset ball, stopping game. 
     else{
+      //sets winner text
       if(playerScore = 7){
         winner = "player";
       }
       else{
         winner = "computer";
       }
-      document.getElementById("End Screen").innerHTML = "Game over!" + winner + " wins!";
+      document.getElementById("End Screen").innerHTML = "Game over, the " + winner + " wins!";
+      document.getElementById("End Popup").style.display="block"
+      const playAgain = document.getElementById("Play Again");
+      playAgain.addEventListener("click",restartGame());
     }
+  }
+  //function called at end of game if player chooses to play again.
+  function restartGame(){
+    //resets score and starts game over
+    initialGame();
+    modal.style.display = "none";
   }
 
 
