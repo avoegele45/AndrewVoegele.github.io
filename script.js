@@ -1,4 +1,3 @@
-<script>
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 const grid = 15;
@@ -7,6 +6,8 @@ const maxPaddleY = canvas.height - grid - paddleHeight;
 
 var paddleSpeed = 6;
 var ballSpeed = 5;
+var playerScore = 0;
+var copmuterScore = 0;
 
 const leftPaddle = {
   // start in the middle of the game on the left side
@@ -99,12 +100,19 @@ function loop() {
   if ( (ball.x < 0 || ball.x > canvas.width) && !ball.resetting) {
     ball.resetting = true;
 
+    if (ball.x < 0 ) {
+      playerScore += 1;
+    }
+  
+    if(ball.x > canvas.width){
+      copmuterScore += 1;
+    }
     // give some time for the player to recover before launching the ball again
     setTimeout(() => {
       ball.resetting = false;
       ball.x = canvas.width / 2;
       ball.y = canvas.height / 2;
-    }, 400);
+    }, 600);
   }
 
   // check to see if ball collides with paddle. if they do change x velocity
@@ -172,4 +180,3 @@ document.addEventListener('keyup', function(e) {
 
 // start the game
 requestAnimationFrame(loop);
-</script>
