@@ -8,6 +8,8 @@ var paddleSpeed = 6;
 var ballSpeed = 3;
 var playerScore = 0;
 var computerScore = 0;
+var isGameOver = false;
+var isGameOverDisplayed = false;
 
 const leftPaddle = {
   // start in the middle of the game on the left side
@@ -53,10 +55,46 @@ function collides(obj1, obj2) {
          obj1.y + obj1.height > obj2.y;
 }
 
+function showGameOverScreen() {
+    document.getElementById('gameOverScreen').style.visibility = "visible";
+    document.getElementById("gameBoard").style.visibility = "hidden";
+}
+  
+function hideGameOverScreen() {
+    document.getElementById('gameOverScreen').style.visibility = "hidden";
+    document.getElementById("gameBoard").style.visibility = "visible";
+}
+  
+function restartGame() {
+    location.reload();
+}
+
+function paddleAI() {
+    
+    if(ball.y > leftPaddle.y) {
+        leftPaddle.dy = ballSpeed - 2;
+        ++leftPaddle.y;
+    }
+    else if(ball.y < leftPaddle.y) {
+        leftPaddle.dy = -(ballSpeed - 2);
+        --leftPaddle.y;
+    }
+}
+
 // game loop
 function loop() {
   requestAnimationFrame(loop);
   context.clearRect(0,0,canvas.width,canvas.height);
+
+  if (isGameOver) {
+    if (!isGameOverDisplayed) {
+        showGameOverScreen();
+      isGameOverDisplayed = true;
+    }
+    return;
+}
+
+paddleAI();
 
   // move paddles by their velocity
   leftPaddle.y += leftPaddle.dy;
@@ -113,6 +151,7 @@ function loop() {
       document.getElementById("computerScore").innerHTML = computerScore;
 
     }
+
     // give some time for the player to recover before launching the ball again
     setTimeout(() => {
       ball.resetting = false;
@@ -120,7 +159,6 @@ function loop() {
       ball.y = canvas.height / 2;
 
     }, 1000);
-
   }
 
   // check to see if ball collides with paddle. if they do change x velocity
@@ -151,6 +189,15 @@ function loop() {
   for (let i = grid; i < canvas.height - grid; i += grid * 2) {
     context.fillRect(canvas.width / 2 - grid / 2, i, grid, grid);
   }
+
+  if (computerScore >= 7 || playerScore >= 7){
+    if (computerScore > playerScore) {
+        document.getElementById("gameResult").innerText = "You Lose";
+    } else {
+        document.getElementById("gameResult").innerText = "You Win!"
+    }
+  isGameOver = true;
+  }
 }
 
 // listen to keyboard events to move the paddles
@@ -165,6 +212,9 @@ document.addEventListener('keydown', function(e) {
     rightPaddle.dy = paddleSpeed;
   }
 
+  // Removing player control of left paddle for paddle AI
+  /*
+
   // w key
   if (e.which === 87) {
     leftPaddle.dy = -paddleSpeed;
@@ -173,6 +223,8 @@ document.addEventListener('keydown', function(e) {
   else if (e.which === 83) {
     leftPaddle.dy = paddleSpeed;
   }
+
+  */
 });
 
 // listen to keyboard events to stop the paddle if key is released
@@ -181,9 +233,14 @@ document.addEventListener('keyup', function(e) {
     rightPaddle.dy = 0;
   }
 
+   // Removing player control of left paddle for paddle AI
+   /*
+
   if (e.which === 83 || e.which === 87) {
     leftPaddle.dy = 0;
   }
+
+  */
 });
 
 // start the game
