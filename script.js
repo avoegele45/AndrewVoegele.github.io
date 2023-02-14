@@ -114,14 +114,24 @@ function loop() {
 
     }
     // give some time for the player to recover before launching the ball again
-    setTimeout(() => {
-      ball.resetting = false;
-      ball.x = canvas.width / 2;
-      ball.y = canvas.height / 2;
+    if(playerScore || computerScore !== 7){
+      setTimeout(() => {
+        ball.resetting = false;
+        ball.x = canvas.width / 2;
+        ball.y = canvas.height / 2;
 
-    }, 1000);
+      }, 1000);
+    }
+    else{
+      if(playerScore == 7){
+        winner = player
+      }
+      else{
+        winner = computer
+      }
+      document.getElementById("End Screen").innerHTML = "Game over!" + winner +" wins!"
+    }
 
-  }
 
   // check to see if ball collides with paddle. if they do change x velocity
   if (collides(ball, leftPaddle)) {
