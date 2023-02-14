@@ -1,4 +1,4 @@
-  html, body {
+html, body {
     height: 100%;
     margin: 0;
   }
@@ -8,4 +8,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  h1{
+    position:  relative;
+    font-size: 50px;
+  }
+    
+  h2{
+    position:  relative;
+    font-size: 50px;
+  }
+
+  h3{
+    position:  relative;
+    font-size: 50px;
+  }
+
+  #gameBoard {
+    visibility: visible;
+  }
+
+  #gameOverScreen {
+    position: fixed;
+    visibility: hidden;
+  }
+  
+  #gameResult {
+    color: red;
   }
