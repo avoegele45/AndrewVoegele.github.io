@@ -132,17 +132,21 @@ function loop() {
       else{
         winner = "computer";
       }
+      //sets end screen text
       document.getElementById("End Screen").innerHTML = "Game over, the " + winner + " wins!";
-      document.getElementById("End Popup").style.display="block"
+
+      const endPopup = document.getElementById("End Popup");
       const playAgain = document.getElementById("Play Again");
-      playAgain.addEventListener("click",restartGame());
+
+      endPopup.style.display="block";
+
+      //function called at end of game if player chooses to play again.
+      playAgain.addEventListener("click",  function restartGame(){
+        //resets score and starts game over
+        initialGame();
+        endPopup.style.display = "none";
+      });
     }
-  }
-  //function called at end of game if player chooses to play again.
-  function restartGame(){
-    //resets score and starts game over
-    initialGame();
-    modal.style.display = "none";
   }
 
 
